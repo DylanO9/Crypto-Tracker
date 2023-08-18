@@ -32,33 +32,38 @@ function App() {
         <div className='App'>
 			<header>
 				<h1 className='dashboard'>Dashboard</h1>
+				<input type='text' placeholder='Search' className='search'/>
 			</header>
 
 			<main>
-				<div className='top'>
-					<div className='gainers'> 
-
-					</div>
-
-					<div className='losers'>
-
-					</div>
+				<div className='sidebar'>
+					
 				</div>
-				<div className='bottom'>
-					<div className='favorited'>
-						<h1 className='favorite-title'></h1>
-						<div className='divider'></div>
+				<div className='data'>
+					<div className='top'>
+						<div className='gainers'> 
+							<h1>Gainers</h1>
+							<div className='divider'></div>
+						</div>
+
+						<div className='losers'>
+							<h1>Losers</h1>
+							<div className='divider'></div>
+						</div>
 					</div>
+					<div className='bottom'>
+						<div className='favorites'>
+							<h1 className='favorite-title'>Favorites</h1>
+							<div className='divider'></div>
+						</div>
 
-					<div className='graph'>
-
+						<div className='graph'>
+							<h1 className='graph-title'>Graph</h1>
+							<div className='divider'></div>
+						</div>
 					</div>
 				</div>
 			</main>
-
-			<footer>
-
-			</footer>
 
         </div>
     );

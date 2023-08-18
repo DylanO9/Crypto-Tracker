@@ -1,17 +1,77 @@
+:root {
+    --primary-color: #F0D85A;
+    --secondary-color: #1A1A1A;
+    --divider-color: #1B1B1B;
+    --font-size: 20px;
+    --font-family: 'Poppins', sans-serif;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+}
+
 .App {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
     height: 100vh;
     width: 100vw;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+    overflow: hidden;
 }
+
 header {
-    color: #F0D85A;
-    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10%;
+}
+
+.dashboard {
+    color: var(--primary-color);
+    font-family: var(--font-family);
     letter-spacing: 1px;
+    margin: 15px;
+}
+
+.search {
+    background-color: var(--secondary-color);
+    border-style: none;
+    border-radius: 30px;
+    width: 30%;
+    height: 20%;
+    margin: 20px;
+    padding: 10px;
+    margin-left: 10.5%;
 }
 
 main {
-    background-color: #1A1A1A;
-    width: 75%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    background-color: var(--secondary-color);
+    width: 20%;
+    height: 95%;
+    margin: 15px;
+    border-radius: 30px;
+}
+
+.data {
+    background-color: var(--secondary-color);
+    width: 80%;
+    height: 95%;
     float: right;
     border-radius: 30px;
     margin: 15px;
@@ -29,31 +89,47 @@ main {
 }
 
 .top {
-    height: 25%;
+    height: 35%;
 }
 
 .bottom {
-    height: 75%;
+    height: 65%;
 }
 
 .gainers {
-    background-color: #070707;
-    height: 75%;
+    background-color: black;
+    height: 85%;
     width: 50%;
     border-radius: 30px;
     margin: 15px;
+}
+
+.gainers h1 {
+    color: white;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    font-size: var(--font-size);
+    text-align: center;
 }
 
 .losers {
-    background-color: #070707;
-    height: 75%;
+    background-color: black;
+    height: 85%;
     width: 50%;
     border-radius: 30px;
     margin: 15px;
 }
 
-.favorited {
-    background-color: #F0D85A;
+.losers h1 {
+    color: white;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    font-size: var(--font-size);
+    text-align: center;
+}
+
+.favorites {
+    background-color: var(--primary-color);
     width: 25%;
     height: 90%;
     border-radius: 30px;
@@ -61,25 +137,31 @@ main {
 }
 
 .favorite-title {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-family);
     letter-spacing: 1px;
-    font-size: 20px;
+    font-size: var(--font-size);
     text-align: center;
-    width: 100%;
-    top: 0px;
 }
 
 .graph {
-    background-color: #070707;
+    background-color: black;
     border-radius: 30px;
     width: 75%;
     height: 90%;
     margin: 15px;
 }
 
+.graph-title {
+    color: white;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    font-size: var(--font-size);
+    padding-left: 15px;
+}
+
 .divider {
-    background-color: #F0D85A;
+    background-color: var(--divider-color);
     width: 100%;
-    height: 1px;
+    height: 2px;
     border-radius: 30px;
 }
