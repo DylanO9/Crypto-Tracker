@@ -1,0 +1,85 @@
+.App {
+    height: 100vh;
+    width: 100vw;
+}
+header {
+    color: #F0D85A;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+}
+
+main {
+    background-color: #1A1A1A;
+    width: 75%;
+    height: 90%;
+    float: right;
+    border-radius: 30px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top,
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-radius: 30px;
+    align-items: center;
+}
+
+.top {
+    height: 25%;
+}
+
+.bottom {
+    height: 75%;
+}
+
+.gainers {
+    background-color: #070707;
+    height: 75%;
+    width: 50%;
+    border-radius: 30px;
+    margin: 15px;
+}
+
+.losers {
+    background-color: #070707;
+    height: 75%;
+    width: 50%;
+    border-radius: 30px;
+    margin: 15px;
+}
+
+.favorited {
+    background-color: #F0D85A;
+    width: 25%;
+    height: 90%;
+    border-radius: 30px;
+    margin: 15px;
+}
+
+.favorite-title {
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    top: 0px;
+}
+
+.graph {
+    background-color: #070707;
+    border-radius: 30px;
+    width: 75%;
+    height: 90%;
+    margin: 15px;
+}
+
+.divider {
+    background-color: #F0D85A;
+    width: 100%;
+    height: 1px;
+    border-radius: 30px;
+}
