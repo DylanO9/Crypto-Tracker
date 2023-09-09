@@ -32,7 +32,6 @@ header {
     flex-direction: row;
     width: 100%;
     height: 10%;
-    justify-content: center;
     align-items: center;
 }
 
@@ -57,7 +56,16 @@ body {
     color: var(--primary-color);
     font-family: var(--font-family);
     letter-spacing: 1px;
-    margin: 15px;
+    margin-left: 22.5%;
+}
+
+.logo {
+    border-radius: 35%;
+    width: 5%;
+}
+
+.logo:hover {
+    cursor: pointer;
 }
 
 form {
@@ -75,26 +83,53 @@ form {
     border-radius: 30px;
     width: 100%;
     height: 60%;
-    margin: 20px;
     padding: 10px;
-    margin-left: 10.5%;
     color: white;
     font-size: var(--font-size);
+    margin-left: 10%;
 }
 
 input[type="text"]:focus {
     outline: none;
 }
 
-.sidebar {
-    background-color: var(--secondary-color);
+.navbar {
+    background-color: black;
+    font-size: .8em;
+    color: grey;
     width: 20%;
+    /* width: 0%; */
     height: 95%;
     margin: 15px;
     border-radius: 30px;
     overflow: hidden;
     align-items: center;
     text-align: center;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    text-align: center;
+    align-items: center;
+    font-family: var(--font-family);
+    font-size: 1.25vw;
+    color: var(--tertiary-color);
+    background-color: transparent;
+}
+
+.nav-menu a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nav-links {
+    margin: 7.5%;
 }
 
 .data {
@@ -157,9 +192,13 @@ input[type="text"]:focus {
     text-align: center;
 }
 
+.no-id {
+    text-align: center;
+}
+
 .favorites {
     background-color: var(--primary-color);
-    width: 15%;
+    width: 30%;
     height: 90%;
     border-radius: 30px;
     margin: 15px;
@@ -177,29 +216,26 @@ input[type="text"]:focus {
 
 .coin {
     width: 100%;
-    height: 20%;
+    height: 15%;
     display: flex;
     flex-direction: row;
     font-family: var(--font-family);
     font-size: var(--font-size-2);
     overflow: hidden;
     align-items: center;
+    justify-content: center;
 }
 
 .coin:hover {
     box-sizing: border-box;
-    width: 100%;
-    height: 20%;
-    background-color: rgb(189, 103, 103);
+    background-color: rgb(151, 151, 151);
     cursor: pointer;
   }
 
 .coin-image {
-    object-fit: fill;
+    object-fit: none;
     margin: 0;
     padding: 0;
-    width: 20%;
-    margin-left: 5%
 }
 
 .coin-name {
@@ -212,14 +248,13 @@ input[type="text"]:focus {
 
 .side-coin {
     display: inline-block;
-    margin-left: 5%;
+    margin-left: 10%;
     margin-right: 5%;
 }
 
 .mid-coin {
     display: inline-block;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 10%;
 }
 
 .price-change-7-days {
@@ -234,7 +269,7 @@ input[type="text"]:focus {
 .graph {
     background-color: black;
     border-radius: 30px;
-    width: 85%;
+    width: 65%;
     height: 90%;
     margin: 15px;
 }
@@ -245,6 +280,11 @@ input[type="text"]:focus {
     letter-spacing: 1px;
     font-size: var(--font-size);
     padding-left: 15px;
+}
+
+.graph-data {
+    width: 100%;
+    height: 100%;
 }
 
 .divider {

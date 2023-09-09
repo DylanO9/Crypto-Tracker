@@ -4,10 +4,11 @@ function Coin (props) {
 // use the API to fetch the data for the coin
 // display the data for the coin
 const image = props.image;
-const price = props.market_data.current_price.usd;
+const price_raw = props.market_data.current_price.usd;
+const price = parseInt(price_raw.toString(), 10);
 const priceChange_raw = props.market_data.price_change_percentage_7d;
 const priceChange = parseInt(priceChange_raw.toString(), 10);
-console.log('thumb: ' + image.thumb);
+
     return (
         <>
             <div className='coin' key={props.id}>
