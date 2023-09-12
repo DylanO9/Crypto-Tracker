@@ -1,10 +1,4 @@
 import { Link, Routes, Route } from 'react-router-dom';
-import React, { useState } from 'react';
-import App from '../pages/App';
-import Account from '../pages/Account';
-import Chart from './Chart';
-import News from '../pages/News';
-import Settings from '../pages/Settings';
 
 function Navbar() {
     return (
