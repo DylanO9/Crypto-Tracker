@@ -4,14 +4,15 @@ import { useEffect, useState } from 'react';
 import '../styles.css';
 import Coin from '../components/Coin';
 import Graph from '../components/Graph';
+import Navbar from '../components/Navbar';
+import Gainers from '../components/Gainers';
 
 const allcoinsurl = 'https://coingecko.p.rapidapi.com/coins/list';
 
 const marketurl = 'https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=1&per_page=100&order=market_cap_desc';
 
 const graphurl1 = 'https://coingecko.p.rapidapi.com/coins/';
-const graphurl2 = '/market_chart/range?from=';
-const graphurl3 = '&vs_currency=usd&to=';
+const graphurl2 = '/market_chart?vs_currency=usd&days=30'
 
 const url1 = 'https://coingecko.p.rapidapi.com/coins/'
 const url2 = '?localization=true&tickers=true&market_data=true&community_data=true&developer_data=true&sparkline=false';
@@ -23,14 +24,11 @@ const options = {
 	}
 };
 
-const timestamp = ((Date.now() / 1000) - 2628000).toFixed(0);
-const timestamp2 = ((Date.now() / 1000) - 86400).toFixed(0);
-
-
 function Home() {
     let jsonFavorites=[];
     const [allFavorites, setAllFavorites] = useState([]);
-    const [Favorites, setFavorites] = useState([]);
+    const [gainers, setGainers] = useState([]);
+    const [gainersFound, setGainersFound] = useState(false);
     const [graphState, setGraphState] = useState(false);
 	const [allCoins, setAllCoins] = useState([]);
 	const [coin, setCoin] = useState({});
@@ -50,7 +48,6 @@ function Home() {
     
         if (responseFavorites.ok) {
             setCoinFound(true);
-            setFavorites(jsonFavorites);
             // console.log('Favorites: ', Favorites);
             getFavorites(jsonFavorites);
         }
@@ -58,18 +55,17 @@ function Home() {
 
 	useEffect(() => {
         fetchFavorites();
-        getTop5Winners();
-        // console.log('temp', allFavorites);
+        getTop4Winners();
 	}, []);
 
     const getFavorites = async (array) => {
         setAllFavorites([]);
         await Promise.all(array.map(async (favorite) => {
-            await getSingleCoin(favorite.id);
+            await getSingleFavorite(favorite.id);
         }));
     };
 
-    const getSingleCoin = async (searchTerm) => {
+    const getSingleFavorite = async (searchTerm) => {
 		const response = await fetch(url1 + searchTerm + url2, options);
 		const data = await response.json();
 		if(JSON.stringify(data) === '{"error":"coin not found"}') {
@@ -88,9 +84,9 @@ function Home() {
 	};
 
 	const getGraphData = async (coin) => {
-		const graphResponse = await fetch(graphurl1 + coin + graphurl2 + timestamp + graphurl3 + timestamp2, options);
+		const graphResponse = await fetch(graphurl1 + coin + graphurl2, options);
 		const graphJson = await graphResponse.json();
-		console.log('graph url: ' + graphurl1 + coin + graphurl2 + timestamp + graphurl3 + timestamp2);
+		console.log('graph url: ' + graphurl1 + coin + graphurl2);
 		console.log('graph data: ' + graphJson);
 
 		setGraphData(graphData => ({
@@ -113,8 +109,6 @@ function Home() {
 		const data = await response.json();
 		if(JSON.stringify(data) === '{"error":"coin not found"}') {
 			console.log("No data found");
-			setCoin({});
-			setCoinFound(false);
 		} else {
 
             // Sets the coin the graph is currently displaying
@@ -131,18 +125,18 @@ function Home() {
 		}
 	};
     
-    const getTop5Winners = async () => {
+    const getTop4Winners = async () => {
         try {
             const response = await fetch(marketurl, options);
             const data = await response.json();
 
+            console.log('data', data);
             const sortedData = data.sort((a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h, 0);
 
-            const top5Winners = sortedData.slice(0, 5);
+            const top4Winners = sortedData.slice(0, 4);
 
-            top5Winners.map((coin, index) => {
-                console.log(`${index + 1}. ${coin.name} (${coin.symbol}): ${coin.price_change_percentage_24h}%`);
-            });
+            setGainersFound(true);
+            setGainers(top4Winners);
         } catch (error) {
             console.log(error);
         }
@@ -161,9 +155,11 @@ function Home() {
         // Gets the graph data for the coin
         getGraphData(searchTerm);
     };
+    
     return (
         <div className="Home">
                 <header>
+                    <Navbar/>
                     <h1 className='dashboard'>Dashboard</h1>
                     <form onSubmit={handleSubmit}>
                             <input type='text' placeholder='Search' id='search' value={searchTerm} onChange={e =>{setSearchTerm(e.target.value); console.log(e.target.value);}}/>
@@ -173,15 +169,16 @@ function Home() {
                 <main>
                     <div className='data'>
                         <div className='top'>
-                            <div className='gainers'> 
-                                <h1>Gainers</h1>
-                                <div className='divider'></div>
-                            </div>
-
-                            <div className='losers'>
-                                <h1>Losers</h1>
-                                <div className='divider'></div>
-                            </div>
+                            {
+                                gainersFound === true? gainers.map((gainer) => {
+                                    return <>
+                                    <button onClick={() => handleFavoriteClick(gainer.id)} className='gainer-button'>
+                                    <Gainers {...gainer}/>
+                                    </button>
+                                    </>
+                                }) :    
+                                <h1 className='no-id'></h1>
+                            }
                         </div>
                         <div className='bottom'>
                             <div className='favorites'>
@@ -197,13 +194,13 @@ function Home() {
                                         <div className='divider'></div>
                                         </>
                                     }) :    
-                                    <h1 className='no-favorites'>No Favorites</h1>
+                                    <h1 className='no-id'></h1>
                                 }
                             </div>
                             <div className='graph'>
-                                <h1 className='graph-title'>Graph</h1>
+                                <h1 className='graph-title'>Graph: {coin.name}</h1>
                                 <div className='divider'></div>
-                                {graphState === true ? <Graph chartData = {graphData}/> 
+                                {graphState === true ? <Graph chartData = {graphData} point={0} border={2} response={true} aspectRatio={false} dis={true}/> 
                                 : <h1 className='no-id'></h1>
                                 }
                             </div>

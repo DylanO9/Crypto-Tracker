@@ -102,42 +102,98 @@ input[type="text"]:focus {
 }
 
 .navbar {
-    background-color: black;
-    font-size: .8em;
-    color: grey;
-    width: 0%;
-    /* width: 20%; */
-    height: 95%;
-    margin: 15px;
-    border-radius: 30px;
-    overflow: hidden;
-    align-items: center;
-    text-align: center;
-}
-
-.nav-menu {
+    height: 80px;
     display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    text-align: center;
+    justify-content: start;
     align-items: center;
-    font-family: var(--font-family);
-    font-size: 1.25vw;
-    color: var(--tertiary-color);
-    background-color: transparent;
-}
-
-.nav-menu a {
-    color: inherit;
+    padding: 10px;
     text-decoration: none;
 }
 
-.nav-links {
-    margin: 7.5%;
+.menu-bars {
+    font-size: 2rem;
+    background: none;
+    color: grey;
+    padding: 5px;
+}
+
+.menu-bars-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-bars:hover {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.nav-menu {
+    background-color: black;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    padding-top: 10px;
+    left: -100%;
+    transition: 850ms;
+}
+
+.nav-menu.active {
+    left: 0;
+    transition: 350ms;
+}
+
+.navbar-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-text {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 8px 0px 8px 8px;
+    list-style: none;
+    height: 60px;
+}
+
+.nav-text a {
+    text-decoration: none;
+    color: #f5f5f5;
+    font-size: var(--font-size);
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.nav-text a:hover {
+    background-color: var(--primary-color);
+    color:black;
+}
+
+.nav-menu-items {
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+}
+
+.navbar-toggle {
+    background-color: #060b26;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+span {
+    margin-left: 16px;
 }
 
 .data {
@@ -154,50 +210,109 @@ input[type="text"]:focus {
 .top,
 .bottom {
     display: flex;
-    justify-content: space-between;
     width: 100%;
-    border-radius: 30px;
     align-items: center;
 }
 
 .top {
     height: 35%;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .bottom {
     height: 65%;
 }
 
-.gainers {
+.gainer-button {
     background-color: black;
     height: 85%;
-    width: 50%;
+    width: 20%;
     border-radius: 30px;
     margin: 15px;
+    color: white;
+    cursor: pointer;
+    border: none;
 }
 
-.gainers h1 {
-    color: white;
-    font-family: var(--font-family);
-    letter-spacing: 1px;
-    font-size: var(--font-size);
+.gainer-button:active {
+    border:none;
+    border-style: none;
+    text-decoration: none;
+    /* if I want it to become larger when clicked */
+    /* height: 90%;
+    width: 21% */
+}
+
+.gainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gainer-top {
+    width: 100%;
+    margin-top: 10px;
+    height: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
     text-align: center;
 }
 
-.losers {
-    background-color: black;
-    height: 85%;
-    width: 50%;
-    border-radius: 30px;
-    margin: 15px;
+.gainer-image {
+    width: 50px;
 }
 
-.losers h1 {
-    color: white;
-    font-family: var(--font-family);
-    letter-spacing: 1px;
-    font-size: var(--font-size);
+.gainer-button:active {
+    border:none;
+    text-decoration: none;
+    background-color: black;
+}
+
+.gainer-names {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size-2);
+}
+
+.gainer-symbol {
+    color: var(--tertiary-color);
+}
+
+.gainer-mid {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
     text-align: center;
+}
+
+.gainer-prices {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size-2);
+}
+
+.gainer-price {
+    font-size: var(--font-size);
+}
+
+.gainer-price-change {
+    color: green;
+}
+
+.gainer-graph {
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .no-id {

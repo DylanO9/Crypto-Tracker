@@ -1,16 +1,38 @@
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import * as FaIcons from 'react-icons/fa';
+import * as AiIcons from 'react-icons/ai';
+import { useState } from 'react';
+import { NavbarData } from './NavbarData';
 
 function Navbar() {
+    const [sidebar, setSidebar] = useState(false);
+    const showSidebar = () => {
+        setSidebar(!sidebar);
+        console.log(sidebar);
+        };
     return (
-        <div className='navbar'>
-            <nav className='nav-menu'>
-                <Link to='/' className='nav-links'>Dashboard</Link>
-                <Link to='/account' className='nav-links'>Account</Link>
-                <Link to='/chart' className='nav-links'>Chart</Link>
-                <Link to='/news' className='nav-links'>News</Link>
-                <Link to='/settings' className='nav-links'>Settings</Link>
+        <>
+            <div className='navbar'>
+                <div className='menu-bars' onClick={() => showSidebar()}> <FaIcons.FaBars /> </div>
+            </div>
+            <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+                <ul className='nav-menu-items' onClick={() => showSidebar()}>
+                    <li classname='navbar-toggle'>
+                        <div className='menu-bars'> <AiIcons.AiOutlineClose/> </div>
+                    </li>
+                    {NavbarData.map((item, index) => {
+                    return (
+                        <li key={index} className={item.cName}>
+                        <Link to={item.path}>
+                            {item.icon}
+                            <span>{item.title}</span>
+                        </Link>
+                        </li>
+                    );
+                    })}
+                </ul>
             </nav>
-        </div>
+        </>
     )
 }
 export default Navbar;
