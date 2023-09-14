@@ -105,8 +105,8 @@ input[type="text"]:focus {
     background-color: black;
     font-size: .8em;
     color: grey;
-    width: 20%;
-    /* width: 0%; */
+    width: 0%;
+    /* width: 20%; */
     height: 95%;
     margin: 15px;
     border-radius: 30px;
@@ -222,16 +222,30 @@ input[type="text"]:focus {
     text-align: center;
 }
 
-.coin {
+.coin-button {
     width: 100%;
     height: 15%;
-    display: flex;
     flex-direction: row;
     font-family: var(--font-family);
     font-size: var(--font-size-2);
+    background-color: var(--primary-color);
+    border: none;
+    padding: 0;
+}
+
+.coin-button:hover {
+    cursor: pointer;
+    width: 100%;
+    height: 15%;
+}
+
+.coin {
+    width: 100%;
+    height: 100%;
+    display: flex;
     overflow: hidden;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .coin:hover {
@@ -242,8 +256,6 @@ input[type="text"]:focus {
 
 .coin-image {
     object-fit: none;
-    margin: 0;
-    padding: 0;
 }
 
 .coin-name {
@@ -256,13 +268,12 @@ input[type="text"]:focus {
 
 .side-coin {
     display: inline-block;
-    margin-left: 10%;
-    margin-right: 5%;
+    width: 12.5%;
 }
 
 .mid-coin {
     display: inline-block;
-    margin-left: 10%;
+    width: 18.5%;
 }
 
 .price-change-7-days {
