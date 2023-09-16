@@ -27,14 +27,10 @@ function Gainers(props) {
     const getGraphData = async (coin) => {
 		const graphResponse = await fetch(graphurl1 + coin + graphurl2, options);
 		const graphJson = await graphResponse.json();
-		console.log('graph url: ' + graphurl1 + coin + graphurl2 + graphurl2);
-		console.log('graph data: ' + graphJson);
 
         const graphPercent = await fetch(url1 + coin + url2, options);
         const graphPercentJson = await graphPercent.json();
-        console.log('percent:', graphPercentJson);
         setPercent(parseFloat(graphPercentJson[coin].usd_24h_change.toPrecision(2)));
-        console.log(percent);
 
 		setGraphData(graphData => ({
 			labels: graphJson.prices.map((price, index) => index),
@@ -44,7 +40,6 @@ function Gainers(props) {
 
 			}]
 		}));
-		console.log(graphJson);
 	};
 
     useEffect(() => {
@@ -64,7 +59,7 @@ function Gainers(props) {
             </div>
             <div className='gainer-mid'>
                 <div className='gainer-prices'>
-                    <h1 className='gainer-price'>${parseFloat(props.current_price.toPrecision(3))}</h1>
+                    <h1 className='gainer-price'>${parseFloat(props.current_price.toPrecision(4 ))}</h1>
                     <h1 className='gainer-price-change'>+{percent}%</h1>
                 </div>
                 <div className='gainer-graph'>

@@ -328,13 +328,29 @@ span {
     display: inline-block;
     align-items: center;
     justify-content: center;
+    text-align: center;
+}
+
+.favorite-top {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.favorite-coins {
+    overflow-y: scroll;
 }
 
 .favorite-title {
+    color: black;
     font-family: var(--font-family);
     letter-spacing: 1px;
     font-size: var(--font-size);
-    text-align: center;
+    padding-left: 15px;
 }
 
 .coin-button {
@@ -363,6 +379,15 @@ span {
     justify-content: space-evenly;
 }
 
+.coin-delete-favorite {
+    background-color: var(--tertiary-color);
+    width: 50px;
+    height: 50%;
+    border-radius: 30px;
+    cursor: pointer;
+    border: none;
+}
+
 .coin:hover {
     box-sizing: border-box;
     background-color: rgb(151, 151, 151);
@@ -370,7 +395,8 @@ span {
   }
 
 .coin-image {
-    object-fit: none;
+    object-fit: cover;
+    width: 40px;
 }
 
 .coin-name {
@@ -379,6 +405,12 @@ span {
 
 .coin-symbol {
     color: var(--tertiary-color)
+}
+
+.coin-top {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
 }
 
 .side-coin {
@@ -408,6 +440,26 @@ span {
     margin: 15px;
 }
 
+.graph-top {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.graph-add-favorite {
+    background-color: var(--primary-color);
+    width: 50px;
+    height: 50%;
+    border-radius: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+}
+
 .graph-title {
     color: white;
     font-family: var(--font-family);
@@ -428,4 +480,23 @@ span {
     width: 100%;
     height: 2px;
     border-radius: 30px;
+}
+
+.trash {
+    width: 50%;
+    height:50%;
+}
+
+.heart {
+    height: 50%;
+    fill:white;
+    cursor: pointer;
+    transition: 500ms;
+    margin-left: 20px;
+}
+
+.heart.active {
+    fill: red;
+    cursor: pointer;
+    transition: 250ms;
 }

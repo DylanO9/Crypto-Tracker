@@ -30,7 +30,7 @@ const getFavorite = async (req, res) => {
 
 // create new favorite
 const createFavorite = async (req, res) => {
-    const {id} = req.body;
+    const { id } = req.body;
 
     // add doc to db
     try{

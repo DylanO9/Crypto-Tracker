@@ -1,19 +1,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/heading-has-content */
 import { useEffect, useState } from 'react';
-import '../styles.css';
 import Coin from '../components/Coin';
 import Graph from '../components/Graph';
 import Navbar from '../components/Navbar';
 import Gainers from '../components/Gainers';
+import * as bsIcons from 'react-icons/bs';
 
 const allcoinsurl = 'https://coingecko.p.rapidapi.com/coins/list';
-
 const marketurl = 'https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=1&per_page=100&order=market_cap_desc';
-
 const graphurl1 = 'https://coingecko.p.rapidapi.com/coins/';
 const graphurl2 = '/market_chart?vs_currency=usd&days=30'
-
 const url1 = 'https://coingecko.p.rapidapi.com/coins/'
 const url2 = '?localization=true&tickers=true&market_data=true&community_data=true&developer_data=true&sparkline=false';
 const options = {
@@ -34,6 +31,7 @@ function Home() {
 	const [coin, setCoin] = useState({});
 	const [searchTerm, setSearchTerm] = useState('');
 	const [coinFound, setCoinFound] = useState(false);
+    const [foundFavorite, setFoundFavorite] = useState(false);
 	const [graphData, setGraphData] = useState({
 		labels: [],
 		datasets: [{
@@ -48,7 +46,7 @@ function Home() {
     
         if (responseFavorites.ok) {
             setCoinFound(true);
-            // console.log('Favorites: ', Favorites);
+            console.log('Favorites: ', jsonFavorites);
             getFavorites(jsonFavorites);
         }
     };
@@ -84,10 +82,12 @@ function Home() {
 	};
 
 	const getGraphData = async (coin) => {
+        setFoundFavorite(false);
+        if(allFavorites.some(el => el.id === coin)) {
+            setFoundFavorite(true);
+        }
 		const graphResponse = await fetch(graphurl1 + coin + graphurl2, options);
 		const graphJson = await graphResponse.json();
-		console.log('graph url: ' + graphurl1 + coin + graphurl2);
-		console.log('graph data: ' + graphJson);
 
 		setGraphData(graphData => ({
 			labels: graphJson.prices.map((price, index) => index),
@@ -97,8 +97,6 @@ function Home() {
 
 			}]
 		}));
-
-		console.log(graphJson);
 	};
 
 	const handleSubmit = async (e) => {
@@ -114,7 +112,6 @@ function Home() {
             // Sets the coin the graph is currently displaying
 			setCoin(data);
 
-			console.log("Data From Search" + data);
 			console.log("Form submitted");
 
             // Sets the coinFound state to true
@@ -130,7 +127,6 @@ function Home() {
             const response = await fetch(marketurl, options);
             const data = await response.json();
 
-            console.log('data', data);
             const sortedData = data.sort((a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h, 0);
 
             const top4Winners = sortedData.slice(0, 4);
@@ -155,7 +151,35 @@ function Home() {
         // Gets the graph data for the coin
         getGraphData(searchTerm);
     };
-    
+
+    const addFavorite = async (searchTerm) => {
+        // Search through the list, and see if one of the same coins is already in the list
+        const found = allFavorites.some(el => el.id === searchTerm);
+        if (!found) {
+            const newFavorite = {id: coin.id};
+            const responseFavorite = await fetch('/api/favorites',{
+                method: 'POST',
+                body: JSON.stringify(newFavorite),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            });
+            const jsonFavorite = await responseFavorite.json();
+            const response = await fetch(url1 + searchTerm + url2, options);
+            if(jsonFavorite.ok) {
+                console.log('Favorite Added');
+            }
+            const data = await response.json();
+            if(JSON.stringify(data) === '{"error":"coin not found"}') {
+                console.log("No data found");
+            } else {
+                // Sets the coin the graph is currently displaying
+                setAllFavorites(allFavorites => [...allFavorites, data]);
+            }
+            setFoundFavorite(true);
+        }
+    };
+
     return (
         <div className="Home">
                 <header>
@@ -182,23 +206,31 @@ function Home() {
                         </div>
                         <div className='bottom'>
                             <div className='favorites'>
-                                <h1 className='favorite-title'>Favorites</h1>
+                                <div className='favorite-top'>
+                                    <h1 className='favorite-title'>Favorites</h1>
+                                </div>
                                 <div className='divider'></div>
                                 {/* Map all the favorites to the favorites tab */}
-                                {
-                                    coinFound === true? allFavorites.map((favoriteCoin) => {
-                                        return <>
-                                        <button onClick={() => handleFavoriteClick(favoriteCoin.id)} className='coin-button'>
-                                        <Coin {...favoriteCoin}/>
-                                        </button>
-                                        <div className='divider'></div>
-                                        </>
-                                    }) :    
-                                    <h1 className='no-id'></h1>
-                                }
+                                <div className='favorite-coins'>
+                                    {
+                                        coinFound === true? allFavorites.map((favoriteCoin) => {
+                                            return <>
+                                            <button onClick={() => handleFavoriteClick(favoriteCoin.id)} className='coin-button'>
+                                            <Coin {...favoriteCoin } setAllFavorites={setAllFavorites} allFavorites={allFavorites}/>
+                                            </button>
+                                            <div className='divider'></div>
+                                            </>
+                                        }) :    
+                                        <h1 className='no-id'></h1>
+                                    }
+                                </div>
                             </div>
                             <div className='graph'>
-                                <h1 className='graph-title'>Graph: {coin.name}</h1>
+                                <div className='graph-top'>
+                                    <h1 className='graph-title'>Graph: {coin.name}</h1>
+                                    {/* <button className='graph-add-favorite' onClick={() => addFavorite(coin.id)}></button> */}
+                                    <bsIcons.BsHeartFill className={foundFavorite ? 'heart active' : 'heart'} onClick={() => addFavorite(coin.id)}/>
+                                </div>
                                 <div className='divider'></div>
                                 {graphState === true ? <Graph chartData = {graphData} point={0} border={2} response={true} aspectRatio={false} dis={true}/> 
                                 : <h1 className='no-id'></h1>
