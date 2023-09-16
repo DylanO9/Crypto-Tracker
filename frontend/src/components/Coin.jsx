@@ -1,4 +1,5 @@
 import * as faIcons from 'react-icons/fa';
+import '../styles/coin.css'
 
 function Coin (props) {
     // Props will pass the name of the coin
@@ -39,7 +40,6 @@ function Coin (props) {
                 <div className='coin' key={props.id}>
                     <div className="coin-top">
                         <img src={image.small} alt='' className='coin-image'></img>
-                        <faIcons.FaTrash className='trash' onClick={() => {deleteFavorite(props.id)}}/>
                     </div>
                     <div className='mid-coin'>
                         <h1 className='coin-name'>{props.name}</h1>
@@ -48,6 +48,9 @@ function Coin (props) {
                     <div className='side-coin'>
                         <h1 className='current-price'>${price}</h1>
                         <h1 className="price-change-7-days">{priceChange}%</h1>
+                    </div>
+                    <div className='end-coin'>
+                        <faIcons.FaTrash className='trash' onClick={() => {deleteFavorite(props.id)}}/>
                     </div>
                 </div>
             </>

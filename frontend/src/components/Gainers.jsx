@@ -2,6 +2,7 @@
 import * as bsIcons from 'react-icons/bs';
 import { useState, useEffect } from 'react';
 import Graph from './Graph';
+import '../styles/gainers.css';
 
 const graphurl1 = 'https://coingecko.p.rapidapi.com/coins/';
 const graphurl2 = '/market_chart?vs_currency=usd&days=1';

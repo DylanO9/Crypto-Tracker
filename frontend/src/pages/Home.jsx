@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/heading-has-content */
+import '../styles/home.css';
 import { useEffect, useState } from 'react';
 import Coin from '../components/Coin';
 import Graph from '../components/Graph';
@@ -7,6 +8,8 @@ import Navbar from '../components/Navbar';
 import Gainers from '../components/Gainers';
 import * as bsIcons from 'react-icons/bs';
 
+
+// All necessary urls for the api calls
 const allcoinsurl = 'https://coingecko.p.rapidapi.com/coins/list';
 const marketurl = 'https://coingecko.p.rapidapi.com/coins/markets?vs_currency=usd&page=1&per_page=100&order=market_cap_desc';
 const graphurl1 = 'https://coingecko.p.rapidapi.com/coins/';
