@@ -2,7 +2,7 @@
 import {Chart as ChartJS} from 'chart.js/auto';
 import React from "react";
 import { Line } from "react-chartjs-2";
-import '../styles/graph.css';
+import '../assets/styles/graph.css';
 
 function Graph(props) {
     const options = {

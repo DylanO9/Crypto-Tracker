@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/heading-has-content */
-import '../styles/home.css';
+import '../assets/styles/home.css';
 import { useEffect, useState } from 'react';
+import { useAuthContext } from '../hooks/useAuthContext';
 import Coin from '../components/Coin';
 import Graph from '../components/Graph';
 import Navbar from '../components/Navbar';
@@ -35,6 +36,7 @@ function Home() {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [coinFound, setCoinFound] = useState(false);
     const [foundFavorite, setFoundFavorite] = useState(false);
+    const { user } = useAuthContext();
 	const [graphData, setGraphData] = useState({
 		labels: [],
 		datasets: [{
@@ -49,7 +51,6 @@ function Home() {
     
         if (responseFavorites.ok) {
             setCoinFound(true);
-            console.log('Favorites: ', jsonFavorites);
             getFavorites(jsonFavorites);
         }
     };
@@ -191,6 +192,9 @@ function Home() {
                     <form onSubmit={handleSubmit}>
                             <input type='text' placeholder='Search' id='search' value={searchTerm} onChange={e =>{setSearchTerm(e.target.value); console.log(e.target.value);}}/>
                     </form>
+                    {user && (
+                        <div className='dashboard-user'>User: {user.email}</div>
+                    )}
                 </header>
 
                 <main>

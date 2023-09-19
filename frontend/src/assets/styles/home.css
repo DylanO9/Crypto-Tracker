@@ -1,0 +1,259 @@
+:root {
+    --primary-color: #F0D85A;
+    --secondary-color: #1A1A1A;
+    --tertiary-color: #4d4d4d;
+    --divider-color: #1B1B1B;
+    --font-size: 1vw;
+    --font-size-2: 0.4vw;
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#root {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.App {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.Home {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+body {
+    height: 60%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+.dashboard {
+    color: var(--primary-color);
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    margin-left: 22.5%;
+    font-size: 2vw;
+}
+
+.dashboard-user {
+    color: white;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    margin-left: 17%;
+    font-size: .75vw;
+}
+
+.logo {
+    border-radius: 35%;
+    width: 5%;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+form {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#search {
+    background-color: var(--secondary-color);
+    border-style: none;
+    border-radius: 30px;
+    width: 100%;
+    height: 60%;
+    padding: 10px;
+    color: white;
+    font-size: var(--font-size);
+    margin-left: 10%;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+.data {
+    background-color: var(--secondary-color);
+    width: 100%;
+    height: 95%;
+    float: right;
+    border-radius: 30px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.top,
+.bottom {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.top {
+    height: 35%;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.bottom {
+    height: 65%;
+}
+
+.no-id {
+    text-align: center;
+}
+
+.favorites {
+    background-color: var(--primary-color);
+    width: 35%;
+    height: 90%;
+    border-radius: 30px;
+    margin: 15px;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.favorite-top {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.favorite-coins {
+    overflow-y: scroll;
+    box-sizing: border-box;
+    height: 85%;;
+}
+
+.favorite-title {
+    color: black;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    font-size: var(--font-size);
+    padding-left: 15px;
+}
+
+.coin-button {
+    width: 100%;
+    height: 20%;
+    flex-direction: row;
+    font-family: var(--font-family);
+    font-size: var(--font-size-2);
+    background-color: var(--primary-color);
+    border: none;
+    padding: 0;
+
+}
+
+.coin-button:hover {
+    cursor: pointer;
+    width: 100%;
+    height: 20%;
+}
+
+
+.graph {
+    background-color: black;
+    border-radius: 30px;
+    width: 65%;
+    height: 90%;
+    margin: 15px;
+}
+
+.graph-top {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.graph-title {
+    color: white;
+    font-family: var(--font-family);
+    letter-spacing: 1px;
+    font-size: var(--font-size);
+    padding-left: 15px;
+}
+
+.graph-add-favorite {
+    background-color: var(--primary-color);
+    width: 50px;
+    height: 50%;
+    border-radius: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+}
+
+.divider {
+    background-color: var(--divider-color);
+    width: 100%;
+    height: 2px;
+    border-radius: 30px;
+}
+
+.trash {
+    width: 50%;
+    height:50%;
+}
+
+.heart {
+    height: 50%;
+    fill:white;
+    cursor: pointer;
+    transition: 500ms;
+    margin-left: 20px;
+}
+
+.heart.active {
+    fill: red;
+    cursor: pointer;
+    transition: 250ms;
+}

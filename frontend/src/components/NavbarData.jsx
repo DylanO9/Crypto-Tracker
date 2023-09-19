@@ -36,4 +36,5 @@ export const NavbarData= [
     icon: <bsIcons.BsFillGearFill/>,
     cName: 'nav-text'
   },
+
 ];

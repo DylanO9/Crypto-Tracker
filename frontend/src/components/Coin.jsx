@@ -1,5 +1,5 @@
 import * as faIcons from 'react-icons/fa';
-import '../styles/coin.css'
+import '../assets/styles/coin.css'
 
 function Coin (props) {
     // Props will pass the name of the coin
