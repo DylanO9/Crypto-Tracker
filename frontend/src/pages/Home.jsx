@@ -46,7 +46,11 @@ function Home() {
 	});
 
     const fetchFavorites = async() => {
-        const responseFavorites = await fetch('/api/favorites');
+        const responseFavorites = await fetch('/api/favorites', {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
         jsonFavorites = await responseFavorites.json();
     
         if (responseFavorites.ok) {
@@ -56,9 +60,11 @@ function Home() {
     };
 
 	useEffect(() => {
-        fetchFavorites();
+        if(user) {
+            fetchFavorites();
+        }
         getTop4Winners();
-	}, []);
+	}, [user]);
 
     const getFavorites = async (array) => {
         setAllFavorites([]);
@@ -159,13 +165,20 @@ function Home() {
     const addFavorite = async (searchTerm) => {
         // Search through the list, and see if one of the same coins is already in the list
         const found = allFavorites.some(el => el.id === searchTerm);
+
+        if(!user) {
+            console.log('You must be logged in');
+            return;
+        }
+
         if (!found) {
             const newFavorite = {id: coin.id};
-            const responseFavorite = await fetch('/api/favorites',{
+            const responseFavorite = await fetch('/api/favorites', {
                 method: 'POST',
                 body: JSON.stringify(newFavorite),
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
                 }
             });
             const jsonFavorite = await responseFavorite.json();
@@ -220,7 +233,7 @@ function Home() {
                                 {/* Map all the favorites to the favorites tab */}
                                 <div className='favorite-coins'>
                                     {
-                                        coinFound === true? allFavorites.map((favoriteCoin) => {
+                                        coinFound === true && user? allFavorites.map((favoriteCoin) => {
                                             return <>
                                             <button onClick={() => handleFavoriteClick(favoriteCoin.id)} className='coin-button'>
                                             <Coin {...favoriteCoin } setAllFavorites={setAllFavorites} allFavorites={allFavorites}/>

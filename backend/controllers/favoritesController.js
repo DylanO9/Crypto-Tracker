@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 
 // get all favorites
 const getFavorites = async (req, res) => {
-    const favorites = await Favorites.find({}).sort({createdAt: -1});
+    const user_id = req.user._id;
+
+    const favorites = await Favorites.find({ user_id }).sort({createdAt: -1});
 
     res.status(200).json(favorites);
 };
@@ -34,7 +36,8 @@ const createFavorite = async (req, res) => {
 
     // add doc to db
     try{
-        const favorite = await Favorites.create({id});
+        const user_id = req.user._id;
+        const favorite = await Favorites.create({id, user_id});
         res.status(200).json(favorite);
     } catch(error) {
         res.status(400).json({error: error.message});

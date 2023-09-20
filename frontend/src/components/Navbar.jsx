@@ -26,7 +26,7 @@ function Navbar() {
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
                 <ul className='nav-menu-items' onClick={() => showSidebar()}>
-                    <li className='navbar-toggle'>
+                    <li key='toggle' className='navbar-toggle'>
                         <div className='menu-bars'> <AiIcons.AiOutlineClose/> </div>
                     </li>
                     {NavbarData.map((item, index) => {
@@ -41,14 +41,13 @@ function Navbar() {
                     })}
                     {user && (
                         <div className='user'>
-                            <span>{user.email}</span>
-                            <li className='logout' key={user} onClick={handleClick}>Logout</li>
+                            <li key='logout' className='logout' onClick={handleClick}>Logout</li>
                         </div>
                     )}
                     {!user && (
                     <div className='login-signup'>
-                        <li className='nav-text'><Link to='/login'><AiIcons.AiOutlineLogin /><span>Login</span></Link></li>
-                        <li className='nav-text'><Link to='/signup'><AiIcons.AiOutlineUserAdd /><span>Signup</span></Link></li>
+                        <li key='login' className='nav-text'><Link to='/login'><AiIcons.AiOutlineLogin /><span>Login</span></Link></li>
+                        <li key='signup' className='nav-text'><Link to='/signup'><AiIcons.AiOutlineUserAdd /><span>Signup</span></Link></li>
                     </div>
                     )}
                 </ul>

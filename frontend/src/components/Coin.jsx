@@ -1,3 +1,4 @@
+import { useAuthContext } from '../hooks/useAuthContext';
 import * as faIcons from 'react-icons/fa';
 import '../assets/styles/coin.css'
 
@@ -6,14 +7,19 @@ function Coin (props) {
     // use the API to fetch the data for the coin
     // display the data for the coin
 
+    const { user } = useAuthContext();
     const image = props.image;
     const price_raw = props.market_data.current_price.usd;
-    const price = parseFloat(price_raw.toPrecision(6));
+    const price = parseFloat(price_raw.toPrecision(5));
     const priceChange_raw = props.market_data.price_change_percentage_7d;
     const priceChange = parseInt(priceChange_raw.toString(), 10);
 
     const deleteFavorite = async (searchTerm) => {
-        const responseFavorites = await fetch('/api/favorites');
+        const responseFavorites = await fetch('/api/favorites', {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
         const jsonFavorites = await responseFavorites.json();
         if (responseFavorites.ok) {
             console.log('Favorites: ', jsonFavorites);
@@ -28,6 +34,9 @@ function Coin (props) {
             console.log('newFavorites: ', props.allFavorites);
             const deleteResponse = await fetch('/api/favorites/' + deleteId, {
                 method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
             });
             const deleteJson = await deleteResponse.json();
             if (deleteResponse.ok) {

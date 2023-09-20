@@ -6,7 +6,12 @@ const {
     deleteFavorite,
     updateFavorite,
 } = require('../controllers/favoritesController');
+const requireAuth = require('../middleware/requireAuth');
+
 const router = express.Router();
+
+// require auth for all favorites routes
+router.use(requireAuth);
 
 // GET all favorites
 router.get('/', getFavorites);

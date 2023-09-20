@@ -7,8 +7,12 @@ const favoriteSchema = new Schema({
         type: String,
         required: true,
     },
+    user_id: {
+        type: String,
+        required: true,
+    },
 }, 
-{ timestamps: false }
+{ timestamps: true }
 );
 module.exports = mongoose.model('Favorites', favoriteSchema);
 
