@@ -1,4 +1,9 @@
 .account-info {
-    color: white;
     font-size: .75vw;
+    padding: 10px;
+    height: 100%;
+    width: 50%;
+}
+
+.account-info-title {
 }
