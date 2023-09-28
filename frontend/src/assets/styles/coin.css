@@ -6,6 +6,7 @@
     overflow: hidden;
     align-items: center;
     justify-content: space-around;
+    cursor: crosshair;
 }
 
 .coin-delete-favorite {
@@ -13,19 +14,18 @@
     width: 50px;
     height: 50%;
     border-radius: 30px;
-    cursor: pointer;
     border: none;
 }
 
 .coin:hover {
     box-sizing: border-box;
     background-color: rgb(151, 151, 151);
-    cursor: pointer;
   }
 
 .coin-image {
     object-fit: cover;
     width: 40px;
+    cursor: pointer;
 }
 
 .coin-name {

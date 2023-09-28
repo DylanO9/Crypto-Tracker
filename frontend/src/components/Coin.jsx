@@ -15,6 +15,9 @@ function Coin (props) {
     const priceChange = parseInt(priceChange_raw.toString(), 10);
 
     const deleteFavorite = async (searchTerm) => {
+        if(searchTerm == props.coin.id) {
+            props.setFoundFavorite(!props.foundFavorite)
+        }
         const responseFavorites = await fetch('/api/favorites', {
             headers: {
                 'Authorization': `Bearer ${user.token}`
@@ -48,7 +51,7 @@ function Coin (props) {
             <>
                 <div className='coin' key={props.id}>
                     <div className="coin-top">
-                        <img src={image.small} alt='' className='coin-image'></img>
+                        <img src={image.small} alt='' className='coin-image' onClick={() => props.handleFavoriteClick(props.favoriteCoin.id)}></img>
                     </div>
                     <div className='mid-coin'>
                         <h1 className='coin-name'>{props.name}</h1>

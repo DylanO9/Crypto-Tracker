@@ -8,6 +8,7 @@ import Graph from '../components/Graph';
 import Navbar from '../components/Navbar';
 import Gainers from '../components/Gainers';
 import * as bsIcons from 'react-icons/bs';
+import React from 'react';
 
 
 // All necessary urls for the api calls
@@ -235,9 +236,10 @@ function Home() {
                                     {
                                         coinFound === true && user? allFavorites.map((favoriteCoin) => {
                                             return <>
-                                            <button onClick={() => handleFavoriteClick(favoriteCoin.id)} className='coin-button'>
-                                            <Coin {...favoriteCoin } setAllFavorites={setAllFavorites} allFavorites={allFavorites}/>
-                                            </button>
+                                            <div className='coin-button'>
+                                                <Coin {...favoriteCoin } setAllFavorites={setAllFavorites} allFavorites={allFavorites} foundFavorite={foundFavorite}
+                                                    coin={coin} setFoundFavorite={setFoundFavorite} handleFavoriteClick={handleFavoriteClick} favoriteCoin={favoriteCoin} />
+                                            </div>
                                             <div className='divider'></div>
                                             </>
                                         }) :    

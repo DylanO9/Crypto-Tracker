@@ -22,5 +22,34 @@
     cursor: pointer;
     border: none;
     text-decoration: none;
+}
+
+
+.signup-label {
+    padding: 10px;
+}
+
+.signup-input {
+    margin: 10px;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+}
+
+.signup-button {
+    background-color: var(--secondary-color);
     color: white;
+    border: none;
+    border-radius: 30px;
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    border: 1px;
+    border-style: solid;
+}
+
+.signup-button:hover {
+    background-color: var(--primary-color);
+    color: black;
 }
