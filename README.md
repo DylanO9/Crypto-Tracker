@@ -8,10 +8,6 @@ Tool to explore cryptocurrencies, keep track of your favorite cryptocurrencies, 
 * User authentication with sign up, and login
 
 # Demo
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=oYXuTOjSWoY
-" target="_blank"><img src="[http://img.youtube.com/vi/oYXuTOjSWoY/0.jpg](https://www.youtube.com/watch?v=oYXuTOjSWoY)" 
-alt="Demo" width="240" height="180" border="10" /></a>
-
 [![Demo](http://img.youtube.com/vi/oYXuTOjSWoY/0.jpg)](http://www.youtube.com/watch?v=oYXuTOjSWoY)
 
 ## Showcase
