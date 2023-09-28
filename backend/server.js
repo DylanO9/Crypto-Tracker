@@ -1,6 +1,7 @@
 require('dotenv').config();
-const favorites = require('./routes/favorites');
+const favoritesRoutes = require('./routes/favorites');
 const userRoutes = require('./routes/user');
+const profileRoutes = require('./routes/profiles');
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -15,8 +16,9 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use('/api/favorites', favorites);
+app.use('/api/favorites', favoritesRoutes);
 app.use('/api/user', userRoutes);
+app.use('/api/profiles', profileRoutes);
 
 // connect to db
 mongoose.connect(process.env.MONG_URI)

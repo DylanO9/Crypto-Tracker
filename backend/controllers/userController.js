@@ -40,36 +40,13 @@ const signupUser = async (req, res) => {
 
 // get all users
 const getUsers = async (req, res) => {
-    try {
-        const users = await User.find({}).sort({createdAt: -1});
+    try{
+        const users = await User.find().sort({createdAt: -1});
+
         res.status(200).json(users);
     } catch (error) {
-        res.status(400).json({error: error.message});
-    }
-};
-
-// get user profile data
-const getProfile = async (req, res) => {
-    try {
-        const profileData = req.user.profile;
-        res.status(200).json(profileData);
-    } catch (error) {
-        res.status(400).json({error: error.message});
+        res.status(400).json({mssg: error.message});
     }
 }
 
-// update user profile data
-const updateProfile = async (req, res) => {
-    const { username, name, age } = req.body;
-
-    try {
-        const user = await User.findById(req.user._id);
-        user.profile = { username, name, age };
-        await user.save();
-        res.status(200).json(user.profile);
-    } catch (error) {
-        res.status(400).json({error: error.message});
-    }
-}
-
-module.exports = { signupUser, loginUser, getUsers, getProfile, updateProfile };
+module.exports = { signupUser, loginUser, getUsers};

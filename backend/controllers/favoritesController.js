@@ -10,8 +10,6 @@ const getFavorites = async (req, res) => {
     res.status(200).json(favorites);
 };
 
-
-
 // get a single favorite
 const getFavorite = async (req, res) => {
     const { id } = req.params;
@@ -28,7 +26,6 @@ const getFavorite = async (req, res) => {
 
     res.status(200).json(favorite);
 };
-
 
 // create new favorite
 const createFavorite = async (req, res) => {

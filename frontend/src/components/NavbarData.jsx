@@ -12,24 +12,24 @@ export const NavbarData= [
     icon: <biIcons.BiSolidDashboard/>,
     cName: 'nav-text'
   },
-  {
-    title: 'Account',
-    path: '/account',
-    icon: <AiIcons.AiOutlineUser />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Chart',
-    path: '/chart',
-    icon: <FaIcons.FaChartLine />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'News',
-    path: '/news',
-    icon: <bsIcons.BsNewspaper/>,
-    cName: 'nav-text'
-  },
+  // {
+  //   title: 'Account',
+  //   path: '/account',
+  //   icon: <AiIcons.AiOutlineUser />,
+  //   cName: 'nav-text'
+  // },
+  // {
+  //   title: 'Chart',
+  //   path: '/chart',
+  //   icon: <FaIcons.FaChartLine />,
+  //   cName: 'nav-text'
+  // },
+  // {
+  //   title: 'News',
+  //   path: '/news',
+  //   icon: <bsIcons.BsNewspaper/>,
+  //   cName: 'nav-text'
+  // },
   {
     title: 'Settings',
     path: '/settings',

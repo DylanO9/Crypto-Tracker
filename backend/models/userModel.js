@@ -14,23 +14,6 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    profile: [
-        {
-            username: {
-                type: String,
-                required: false,
-                unique: true,
-            },
-            name: {
-                type: String,
-                required: false,
-            },
-            age: {
-                type: Number,
-                required: false,
-            },
-        },
-    ]
 });
 
 // static signup method

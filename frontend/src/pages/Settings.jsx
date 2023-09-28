@@ -1,8 +1,25 @@
 import '../assets/styles/settings.css';
 import Navbar from '../components/Navbar';
 import AccountInfo from '../components/AccountInfo';
+import Help from '../components/Help';
+import About from '../components/About';
+import { useState } from 'react';
 
 function Settings() {
+    const [activeComponent, setActiveComponent] = useState('account');
+
+    const renderComponent = () => {
+        switch (activeComponent) {
+            case 'account':
+                return <AccountInfo />;
+            case 'help':
+                return <Help />;
+            case 'about':
+                return <About />;
+            default: 
+            return <AccountInfo />;
+        }
+    }
     return (
         <>
         <div className='settings'>
@@ -12,13 +29,13 @@ function Settings() {
             </div>
             <div className='settings-main'>
                 <ul className='settings-list'>
-                    <li className='settings-list-item'>Account</li>
-                    <li className='settings-list-item'>Privacy</li>
-                    <li className='settings-list-item'>Notifications</li>
-                    <li className='settings-list-item'>Help</li>
-                    <li className='settings-list-item'>About</li>
+                    <li onClick={() => setActiveComponent('account')} className='settings-list-item'>Account</li>
+                    <li onClick={() => setActiveComponent('help')} className='settings-list-item'>Help</li>
+                    <li onClick={() => setActiveComponent('about')} className='settings-list-item'>About</li>
                 </ul>
-                <AccountInfo />
+                <div className='settings-component'>
+                    {renderComponent()}
+                </div>
             </div>
         </div>
         </>
