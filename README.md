@@ -8,7 +8,7 @@ Tool to explore cryptocurrencies, keep track of your favorite cryptocurrencies, 
 * User authentication with sign up, and login
 
 # Demo
-![Demo Video](https://www.youtube.com/watch?v=oYXuTOjSWoY)
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=oYXuTOjSWoY" frameborder="0" allowfullscreen></iframe>
 
 ## Showcase
 ![Login](https://i.gyazo.com/e7e04e5031f3f8e926ec2261710179ac.png)
