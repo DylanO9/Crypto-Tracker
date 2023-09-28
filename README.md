@@ -12,6 +12,8 @@ Tool to explore cryptocurrencies, keep track of your favorite cryptocurrencies, 
 " target="_blank"><img src="[http://img.youtube.com/vi/oYXuTOjSWoY/0.jpg](https://www.youtube.com/watch?v=oYXuTOjSWoY)" 
 alt="Demo" width="240" height="180" border="10" /></a>
 
+[![Demo](http://img.youtube.com/vi/oYXuTOjSWoY/0.jpg)](http://www.youtube.com/watch?v=oYXuTOjSWoY)
+
 ## Showcase
 ![Login](https://i.gyazo.com/e7e04e5031f3f8e926ec2261710179ac.png)
 ![Sign up](https://i.gyazo.com/bfbb265a913e95b3a6a3ee73f6630cf0.png)
