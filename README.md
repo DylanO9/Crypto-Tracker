@@ -7,6 +7,9 @@ Tool to explore cryptocurrencies, keep track of your favorite cryptocurrencies, 
 * Create and edit user profile with username, name, and age
 * User authentication with sign up, and login
 
+# Demo
+![Demo Video](https://www.youtube.com/watch?v=oYXuTOjSWoY)
+
 ## Showcase
 ![Login](https://i.gyazo.com/e7e04e5031f3f8e926ec2261710179ac.png)
 ![Sign up](https://i.gyazo.com/bfbb265a913e95b3a6a3ee73f6630cf0.png)
