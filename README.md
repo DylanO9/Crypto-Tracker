@@ -9,7 +9,7 @@ Tool to explore cryptocurrencies, keep track of your favorite cryptocurrencies, 
 
 # Demo
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=oYXuTOjSWoY
-" target="_blank"><img src="[http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg](https://www.youtube.com/watch?v=oYXuTOjSWoY)" 
+" target="_blank"><img src="[http://img.youtube.com/vi/oYXuTOjSWoY/0.jpg](https://www.youtube.com/watch?v=oYXuTOjSWoY)" 
 alt="Demo" width="240" height="180" border="10" /></a>
 
 ## Showcase
