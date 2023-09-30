@@ -3,10 +3,13 @@ const favoritesRoutes = require('./routes/favorites');
 const userRoutes = require('./routes/user');
 const profileRoutes = require('./routes/profiles');
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 // express app
 const app = express();
+
+app.use(cors());
 
 // middleware
 app.use(express.json());
