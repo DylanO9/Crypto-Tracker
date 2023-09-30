@@ -24,7 +24,7 @@ app.use('/api/profiles', profileRoutes);
 mongoose.connect(process.env.MONG_URI)
     .then(() => {
         // listen for requests
-        app.listen(process.env.PORT, () => {
+        app.listen('https://cryptotracker-jkyt.onrender.com', () => {
         console.log(`Server is running on port ${process.env.PORT}`);
         });
     })
