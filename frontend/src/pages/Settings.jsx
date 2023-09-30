@@ -1,4 +1,5 @@
 import '../assets/styles/settings.css';
+import React from 'react';
 import Navbar from '../components/Navbar';
 import AccountInfo from '../components/AccountInfo';
 import Help from '../components/Help';

@@ -6,6 +6,7 @@ import { NavbarData } from './NavbarData';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 import '../assets/styles/navbar.css';
+import React from 'react';
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false);

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React from 'react';
 import { useSignup } from "../hooks/useSignup";
 import { Link } from "react-router-dom";
 import '../assets/styles/signup.css';

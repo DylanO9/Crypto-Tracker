@@ -1,6 +1,7 @@
 import { useAuthContext } from '../hooks/useAuthContext';
 import * as faIcons from 'react-icons/fa';
 import '../assets/styles/coin.css'
+import React from 'react';
 
 function Coin (props) {
     // Props will pass the name of the coin

@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/heading-has-content */
+import React from 'react';
 import '../assets/styles/home.css';
 import { useEffect, useState } from 'react';
 import { useAuthContext } from '../hooks/useAuthContext';
@@ -8,7 +9,6 @@ import Graph from '../components/Graph';
 import Navbar from '../components/Navbar';
 import Gainers from '../components/Gainers';
 import * as bsIcons from 'react-icons/bs';
-import React from 'react';
 
 
 // All necessary urls for the api calls
