@@ -1,4 +1,4 @@
-# Coin-Tracker
+# Crypto-Tracker
 Tool to explore cryptocurrencies, keep track of your favorite cryptocurrencies, and the top gaining cryptocurrencies. 
 ## Features
 * Add and remove cryptocurrencies from user portfolio
