@@ -15,7 +15,7 @@ function Login() {
         try{
             await login(email, password);
         } catch (err) {
-            console.log('help');
+            console.log(err);
         }
     };
 
