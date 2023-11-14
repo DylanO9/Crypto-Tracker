@@ -1,67 +1,52 @@
-
-.coin {
+#favorite-coins li {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat (4, 1fr);
+    grid-template-rows: 1fr;
+    column-gap: 1rem;
+    row-gap: 1rem;
+    padding: .75rem 1rem;
+    margin: 0;
     width: 100%;
-    height: 100%;
-    display: flex;
-    overflow: hidden;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
-    cursor: crosshair;
+    border-bottom: 1px solid var(--tertiary-color);
+    font-size: var(--font-size-2);
 }
 
-.coin-delete-favorite {
-    background-color: var(--tertiary-color);
-    width: 50px;
-    height: 50%;
-    border-radius: 30px;
-    border: none;
+.coin img {
+    grid-area: 1 / 1 / 2 / 1;
 }
 
-.coin:hover {
-    box-sizing: border-box;
-    background-color: rgb(151, 151, 151);
-  }
-
-.coin-image {
-    object-fit: cover;
-    width: 40px;
-    cursor: pointer;
+.coin .coin-name {
+    grid-area: 1 / 2 / 2 / 2;
+    width: 8dvw;
 }
 
-.coin-name {
-    font-style: var();
+.coin h3, coin-price {
+    margin: 0 0 .75rem 0;
 }
 
-.coin-symbol {
-    color: var(--tertiary-color)
+.coin coin-change {
+    background-color: black;
+    padding: .5rem 1rem;
+    border-radius: 1rem;
 }
 
-.coin-top {
-    display: inline-block;
+.coin .coin-name, .coin-prices {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.side-coin {
-    display: inline-block;
-    width: 12.5%;
+.coin .coin-prices {
+    grid-area: 1 / 3 / 2 / 3;
 }
 
-.mid-coin {
-    display: inline-block;
-    width: 18.5%;
-}
-
-.price-change-7-days {
-    background-color: black;
-    text-align: center;
-    color: green;
-    border-radius: 30px;
-    padding: 2px;
-    font-size: .7vw
-}
-
-.end-coin {
-    float: right;
-    width: 7.5%;
+.coin #trash {
+    grid-area: 1 / 4 / 2 / 4;
+    height: 50%;
+    border-radius: 1rem;
+    padding: .5rem;
 }
