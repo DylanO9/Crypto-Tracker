@@ -18,6 +18,7 @@ const options = {
 };
 
 function Gainers(props) {
+    console.log('gainers', props);
     const [graphData, setGraphData] = useState({
 		labels: [],
 		datasets: [{
@@ -39,7 +40,7 @@ function Gainers(props) {
 			datasets: [{
 				label: 'Price',
 				data: graphJson.prices.map((price) => price[1]),
-
+                borderColor: '#36A2EB',
 			}]
 		}));
 	};

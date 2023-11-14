@@ -1,7 +1,6 @@
 import React from 'react';
 import Home from './pages/Home';
 import Settings from './pages/Settings';
-import Navbar from './components/Navbar';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import { BrowserRouter } from 'react-router-dom'

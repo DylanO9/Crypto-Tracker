@@ -1,4 +1,5 @@
 import { useAuthContext } from '../hooks/useAuthContext';
+import { useState } from 'react';
 import * as faIcons from 'react-icons/fa';
 import '../assets/styles/coin.css'
 import React from 'react';
@@ -7,16 +8,17 @@ function Coin (props) {
     // Props will pass the name of the coin
     // use the API to fetch the data for the coin
     // display the data for the coin
-
+    console.log(props);
     const { user } = useAuthContext();
-    const image = props.image;
-    const price_raw = props.market_data.current_price.usd;
+    const image = props.favoriteCoin.image;
+    const price_raw = props.favoriteCoin.market_data.current_price.usd;
     const price = parseFloat(price_raw.toPrecision(5));
-    const priceChange_raw = props.market_data.price_change_percentage_7d;
+    const priceChange_raw = props.favoriteCoin.market_data.price_change_percentage_7d;
     const priceChange = parseInt(priceChange_raw.toString(), 10);
 
+
     const deleteFavorite = async (searchTerm) => {
-        if(searchTerm == props.coin.id) {
+        if(searchTerm === props.favoriteCoin.id) {
             props.setFoundFavorite(!props.foundFavorite)
         }
         const responseFavorites = await fetch('/api/favorites', {
@@ -31,6 +33,10 @@ function Coin (props) {
             jsonFavorites.map((el) => {
                 if(el.id === searchTerm) {
                     deleteId = el._id;
+                    return deleteId;
+                } else {
+                    deleteId = null;
+                    return null;
                 }
             });
 

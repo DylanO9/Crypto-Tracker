@@ -46,6 +46,14 @@ function Home() {
 		}]
 	});
 
+	useEffect(() => {
+        if(user) {
+            fetchFavorites();
+        }
+        getTop4Winners();
+	}, [user]);
+
+    
     const fetchFavorites = async() => {
         const responseFavorites = await fetch('/api/favorites', {
             headers: {
@@ -59,13 +67,6 @@ function Home() {
             getFavorites(jsonFavorites);
         }
     };
-
-	useEffect(() => {
-        if(user) {
-            fetchFavorites();
-        }
-        getTop4Winners();
-	}, [user]);
 
     const getFavorites = async (array) => {
         setAllFavorites([]);
@@ -105,7 +106,7 @@ function Home() {
 			datasets: [{
 				label: 'Price',
 				data: graphJson.prices.map((price) => price[1]),
-
+                borderColor: '#36A2EB',
 			}]
 		}));
 	};
@@ -125,11 +126,11 @@ function Home() {
 
 			console.log("Form submitted");
 
-            // Sets the coinFound state to true
-			setGraphState(true);
-
             // Gets the graph data for the coin
 			getGraphData(searchTerm);
+            
+            // Sets the coinFound state to true
+			setGraphState(true);
 		}
 	};
     
@@ -138,9 +139,7 @@ function Home() {
             const response = await fetch(marketurl, options);
             const data = await response.json();
 
-            const sortedData = data.sort((a, b) => b.price_change_percentage_24h - a.price_change_percentage_24h, 0);
-
-            const top4Winners = sortedData.slice(0, 4);
+            const top4Winners = data.slice(0, 4);
 
             setGainersFound(true);
             setGainers(top4Winners);

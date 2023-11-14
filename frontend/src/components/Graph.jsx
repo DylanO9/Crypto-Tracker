@@ -5,6 +5,7 @@ import { Line } from "react-chartjs-2";
 import '../assets/styles/graph.css';
 
 function Graph(props) {
+    console.log('graph', props)
     const options = {
         pointRadius: props.point,
         borderWidth: props.border,
@@ -26,7 +27,7 @@ function Graph(props) {
         }
     }
     return (
-        <div className='graph-data'>
+        <div className='graph-data' key={props.id}>
             <Line data={props.chartData} options={options}> </Line>
         </div>
     )
