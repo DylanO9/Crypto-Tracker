@@ -80,6 +80,32 @@ main {
 
 #graph {
     grid-area: 2 / 2 / 4 / 4;
-    background-color: var(--secondary-color);
+    background-color: black;
     border-radius: 1rem;
+    color: white;
+}
+
+.sub-title {
+    text-align: center;
+    border-bottom: 1px solid var(--divider-color);
+    padding: .5rem;
+    margin: 0;
+}
+
+#graph button {
+    background-color: transparent;
+    border-style: none;
+    cursor: pointer;
+}
+.heart svg{
+    height: 50%;
+    fill:white;
+    transition: 500ms;
+}
+
+.heart .active svg{
+    background-color: red;
+    fill: red;
+    cursor: pointer;
+    transition: 250ms;
 }

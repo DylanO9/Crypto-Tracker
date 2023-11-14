@@ -16,6 +16,7 @@ function Home() {
     const [gainers, setGainers] = useState([]);
     const { user } = useAuthContext();
     const [favorites, setFavorites] = useState([]);
+    const [foundFavorite, setFoundFavorite] = useState(false);
     const [graphState, setGraphState] = useState(false);
     const [graphCoin, setGraphCoin] = useState({});
     const [searchTerm, setSearchTerm] = useState('');
@@ -44,7 +45,7 @@ function Home() {
             getFavorites();
         }
         getTop4Winners();
-    }, [user]);
+    }, [user, setFavorites]);
 
     const getFavorites = async () => {
         try {
@@ -54,7 +55,6 @@ function Home() {
                 }
             });
             let jsonFavorites = await responseFavorites.json();
-            console.log('jsonFavorites', jsonFavorites);
             if (!responseFavorites.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -64,10 +64,52 @@ function Home() {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                console.log('data', data);
+                data._id = favorite._id;
                 setFavorites(favorites => [...favorites, data]);
             }));
         } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const addFavorite = async () => {
+        try {
+            console.log(graphCoin.name);
+            const found = favorites.some(el => el.id === graphCoin.name);
+
+            if(!user) {
+                console.log('You must be logged in');
+                return;
+            }
+    
+            if (!found) {
+                const newFavorite = {id: graphData.id};
+                const responseFavorite = await fetch('/api/favorites', {
+                    method: 'POST',
+                    body: JSON.stringify(newFavorite),
+                    headers: {
+                        'content-type': 'application/json',
+                        'Authorization': `Bearer ${user.token}`
+                    }
+                });
+                const jsonFavorite = await responseFavorite.json();
+                const response = await fetch(url1 + graphData.id + url2, options);
+                if(jsonFavorite.ok) {
+                    console.log('Favorite Added');
+                }
+                const data = await response.json();
+                if(JSON.stringify(data) === '{"error":"coin not found"}') {
+                    console.log("No data found");
+                } else {
+                    // Sets the coin the graph is currently displaying
+                    setFavorites(favorites => [...favorites, data]);
+                }
+                setFoundFavorite(true);
+            } else if(found) {
+                setFoundFavorite(true);
+            }
+        }
+        catch (error) {
             console.log(error);
         }
     };
@@ -96,9 +138,9 @@ function Home() {
             }
             const data = await response.json();
             if(JSON.stringify(data) === '{"error":"coin not found"}') {
-                console.log("No data found");
+                console.log('No data found');
             } else {
-                console.log("Form submitted");
+                console.log('Form submitted');
                 getGraphData(searchTerm);
                 setGraphState(true);
                 setGraphCoin(data);
@@ -145,26 +187,29 @@ function Home() {
             )}
         </header>
         <main>
-            <section id="gainers">
+            <section id='gainers'>
                 {
                     gainersFound === true? gainers.map((gainer) => {
                         return (
-                            <Gainers {...gainer}/>
+                            <Gainers {...gainer} getGraphData={getGraphData} setGraphState={setGraphState} setGraphCoin={setGraphCoin}/>
                         )}) :    
                     <p>No gainers were found</p>
                 }
             </section>
-            <ul id="favorite-coins">
+            <ul id='favorite-coins'>
+                <h2 className='sub-title'>Favorites</h2>
                 {
                     favorites.length > 0? favorites.map((favorite) => {
                         return (
-                            <Coin {...favorite}/>
+                            <Coin {...favorite} favorites={favorites} setFavorites={setFavorites} getGraphData={getGraphData} setGraphState={setGraphState} setGraphCoin={setGraphCoin}/>
                         )}) :    
                     <p>No favorites were found</p>
                 }
             </ul>
 
-            <section id="graph">
+            <section id='graph'>
+                <h2 className='sub-title'>Graph: {graphCoin.name}</h2>
+                <button className={foundFavorite ? 'heart active' : 'heart'} onClick={addFavorite}><bsIcons.BsHeartFill/></button>
                 {
                     graphState === true? <Graph chartData={graphData} point={0} border={2} response={true} aspectRatio={false} dis={true}/>
                     : <p>Graph not found</p>

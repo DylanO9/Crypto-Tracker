@@ -18,6 +18,7 @@ function Gainers(props) {
         }
     };
 
+
     const [graphData, setGraphData] = useState({
 		labels: [],
 		datasets: [{
@@ -68,8 +69,30 @@ function Gainers(props) {
         }
     };
 
+    const handleClick = async (e) => {
+        try {
+            e.preventDefault();
+            const response = await fetch(url1 + props.id + url2, options);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            if(JSON.stringify(data) === '{"error":"coin not found"}') {
+                console.log("No data found");
+            } else {
+                console.log("Form submitted");
+                props.getGraphData(props.id);
+                props.setGraphState(true);
+                props.setGraphCoin(data);
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
-        <div className="gainer" key={props.id}>
+        <button className="gainer" key={props.id} onClick={handleClick}>
             <img src={props.image} alt={props.name} />
             <div className='coin-name'>
                 <h3>{props.name}</h3>
@@ -79,7 +102,7 @@ function Gainers(props) {
             <coin-price>${parseFloat(props.current_price.toPrecision(4))}</coin-price>
             <coin-change>{percent}%</coin-change>
             <Graph chartData={graphData} point={0} border={2} response={true} aspectRatio={false} dis={false}/>
-        </div>
+        </button>
     )
 }
 
