@@ -23,22 +23,20 @@ function Settings() {
     }
     return (
         <>
-        <div className='settings'>
-            <div className='settings-top'>
-                <Navbar />
-                <h1 className='settings-title'>My Settings</h1>
-            </div>
-            <div className='settings-main'>
-                <ul className='settings-list'>
-                    <li onClick={() => setActiveComponent('account')} className='settings-list-item'>Account</li>
-                    <li onClick={() => setActiveComponent('help')} className='settings-list-item'>Help</li>
-                    <li onClick={() => setActiveComponent('about')} className='settings-list-item'>About</li>
-                </ul>
-                <div className='settings-component'>
-                    {renderComponent()}
-                </div>
-            </div>
-        </div>
+        <header>
+            <Navbar />
+            <h1 className='settings-title'>My Settings</h1>
+        </header>
+        <main>
+            <ul id='settings-list'>
+                <li onClick={() => setActiveComponent('account')} className='settings-list-item'>Account</li>
+                <li onClick={() => setActiveComponent('help')} className='settings-list-item'>Help</li>
+                <li onClick={() => setActiveComponent('about')} className='settings-list-item'>About</li>
+            </ul>
+            <section id='settings-component'>
+                {renderComponent()}
+            </section>
+        </main>
         </>
     )
 }

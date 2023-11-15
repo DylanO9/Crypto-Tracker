@@ -1,5 +1,11 @@
+.account-info-section {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
 .account-info-form {
-    margin-top: -100px;
     font-size: .75vw;
     padding: 10px;
     height: 100%;

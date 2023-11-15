@@ -104,31 +104,19 @@ function AccountInfo() {
     }
 
     return (
-        <div className='settings-body'>
+        <section className='account-info-section'>
         {foundProfile && user ? (
             <form className='account-info-form' onSubmit={handleSubmit}>
-                <div className='account-info'>
                     <h2 className='account-info-title'>Account Information</h2>
                     <label className='account-info-email'>Email: {user ? user.email : 'no data'}</label>
-                    <div className='form-group'>
                         <label className='account-info-username'>Username:</label>
                         <input type='text' onChange={(e) => setUsername(e.target.value)} placeholder={user ? profile.username : 'username'} className='account-info-username-input'></input>
-                    </div>
-                </div>
-                <div className='personal-info'>
                     <h2 className='personal-info-title'>Personal Information</h2>
-                    <div className='form-group'>
                         <label className='personal-info-name'>Name: </label>
                         <input type='text' onChange={(e) => setName(e.target.value)} placeholder={user ? profile.name : 'name'} className='personal-info-name-input'></input>
-                    </div>
-                    <div className='form-group'>
                         <label className='personal-info-age'>Age: </label>
                         <input type='number' onChange={(e) => setAge(e.target.value)} placeholder={user ? profile.age : 'age'} className='personal-info-age-input'></input>
-                    </div>
-                </div>
-                <button className='form-button'>
-                    Save
-                </button>
+
                 {error && <p className='error'>{error}</p>}
             </form> )
             : (
@@ -137,7 +125,7 @@ function AccountInfo() {
                     <button className='form-button' onClick={createAccount}>create acc</button>
                 </div>
             ) }
-        </div>
+        </section>
     )
 }
 

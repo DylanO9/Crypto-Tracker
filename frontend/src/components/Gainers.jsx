@@ -31,7 +31,8 @@ function Gainers(props) {
     useEffect(() => {
         getGraphData(props.id);
         getGainerData(props.id);
-    }, [props.id]);
+        props.checkFavorite();
+    }, [props.id, props.graphCoin]);
 
     const getGraphData = async (coin) => {
         try {
@@ -83,7 +84,7 @@ function Gainers(props) {
                 console.log("Form submitted");
                 props.getGraphData(props.id);
                 props.setGraphState(true);
-                props.setGraphCoin(data);
+                props.setGraphCoin({...data, id: props.id});
             }
         }
         catch (error) {

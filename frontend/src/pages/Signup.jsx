@@ -16,7 +16,7 @@ function Signup() {
     };
 
     return (
-        <div className='signup'>
+        <section className='signup'>
             <form className='signup-form' onSubmit={handleSubmit}>
                 <h1 className='signup-title'>Sign up</h1>
 
@@ -39,7 +39,7 @@ function Signup() {
                 {error && <div className='error'>{error}</div>}
             </form>
             <p className='login'> <Link to='/login'><span>Already a member? Log in</span></Link></p>
-        </div>
+        </section>
     )
 }
 

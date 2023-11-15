@@ -1,5 +1,5 @@
 import { useAuthContext } from '../hooks/useAuthContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as faIcons from 'react-icons/fa';
 import '../assets/styles/coin.css'
 import React from 'react';
@@ -21,9 +21,12 @@ function Coin (props) {
     const priceChange_raw = props.market_data.price_change_percentage_7d;
     const priceChange = parseInt(priceChange_raw.toString(), 10);
 
+    useEffect(() => {
+       props.checkFavorite();
+    }, [props.graphCoin]);
+
     const deleteCoin = async () => {
         try {
-            console.log(props);
             let deleteId = props._id;
             props.setFavorites(props.favorites.filter((el) => el.id !== props.id));
             const deleteResponse = await fetch('/api/favorites/' + deleteId, {
@@ -36,6 +39,7 @@ function Coin (props) {
                 throw new Error('Network response was not ok');
             }
             const deleteJson = await deleteResponse.json();
+            props.setFoundFavorite(false);
         }
         catch (error) {
             console.log(error);
@@ -56,7 +60,7 @@ function Coin (props) {
                 console.log("Form submitted");
                 props.getGraphData(props.id);
                 props.setGraphState(true);
-                props.setGraphCoin(data);
+                props.setGraphCoin({...data, id: props.id});
             }
         }
         catch (error) {
