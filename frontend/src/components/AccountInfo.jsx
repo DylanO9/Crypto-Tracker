@@ -104,28 +104,31 @@ function AccountInfo() {
     }
 
     return (
-        <section className='account-info-section'>
+        <>
         {foundProfile && user ? (
-            <form className='account-info-form' onSubmit={handleSubmit}>
-                    <h2 className='account-info-title'>Account Information</h2>
-                    <label className='account-info-email'>Email: {user ? user.email : 'no data'}</label>
-                        <label className='account-info-username'>Username:</label>
-                        <input type='text' onChange={(e) => setUsername(e.target.value)} placeholder={user ? profile.username : 'username'} className='account-info-username-input'></input>
-                    <h2 className='personal-info-title'>Personal Information</h2>
-                        <label className='personal-info-name'>Name: </label>
-                        <input type='text' onChange={(e) => setName(e.target.value)} placeholder={user ? profile.name : 'name'} className='personal-info-name-input'></input>
-                        <label className='personal-info-age'>Age: </label>
-                        <input type='number' onChange={(e) => setAge(e.target.value)} placeholder={user ? profile.age : 'age'} className='personal-info-age-input'></input>
-
+            <form id='account-info' onSubmit={handleSubmit}>
+                    <h2>Account Information</h2>
+                    <label>Email: {user ? user.email : 'no data'}</label>
+                    <label>Username:
+                    <input type='text' onChange={(e) => setUsername(e.target.value)} placeholder={user ? profile.username : 'username'}></input>
+                    </label>
+                    <h2>Personal Information</h2>
+                    <label>Name:
+                    <input type='text' onChange={(e) => setName(e.target.value)} placeholder={user ? profile.name : 'name'}></input>
+                    </label>
+                    <label className='personal-info-age'>Age:
+                    <input type='number' onChange={(e) => setAge(e.target.value)} placeholder={user ? profile.age : 'age'}></input>
+                    </label>
+                    <button>Save</button>
                 {error && <p className='error'>{error}</p>}
             </form> )
             : (
-                <div className='no-account'>
+                <section id='no-account'>
                     <h1>There seems to be no profile linked to your account</h1>
-                    <button className='form-button' onClick={createAccount}>create acc</button>
-                </div>
+                    <button onClick={createAccount}>create acc</button>
+                </section>
             ) }
-        </section>
+        </>
     )
 }
 

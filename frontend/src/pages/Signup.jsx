@@ -16,30 +16,28 @@ function Signup() {
     };
 
     return (
-        <section className='signup'>
-            <form className='signup-form' onSubmit={handleSubmit}>
-                <h1 className='signup-title'>Sign up</h1>
+        <main>
+            <form id='signup' onSubmit={handleSubmit}>
+                <h1>Sign up</h1>
 
-                <label className='signup-label'>Email: </label>
+                <label>Email: </label>
                 <input
-                    className='signup-input'
                     type='email'
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                 />
-                <label className='signup-label'>Password: </label>
+                <label>Password: </label>
                 <input
-                    className='signup-input'
                     type='password'
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
                 />
 
-                <button className='signup-button' disabled={isLoading}>Sign up</button>
+                <button disabled={isLoading}>Sign up</button>
                 {error && <div className='error'>{error}</div>}
+                <p> <Link to='/login'><span>Already a member? Log in</span></Link></p>
             </form>
-            <p className='login'> <Link to='/login'><span>Already a member? Log in</span></Link></p>
-        </section>
+        </main>
     )
 }
 

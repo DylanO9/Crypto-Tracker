@@ -4,6 +4,9 @@ a {
     background-color: transparent;
 }
 
-.help {
-    padding: 10px;
+#help {
+}
+
+#help h2 {
+    font-size: var(--font-size-3);
 }

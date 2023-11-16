@@ -66,6 +66,7 @@ function Home() {
                 const data = await response.json();
                 data._id = favorite._id;
                 setFavorites(favorites => [...favorites, data]);
+                console.log(favorites);
             }));
         } catch (error) {
             console.log(error);

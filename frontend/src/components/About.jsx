@@ -4,8 +4,8 @@ import React from 'react';
 function About () {
     return (
         <section id='about'>
-            <h1 className='about-title'>About</h1>
-            <p className='about-text'>
+            <h2>About</h2>
+            <p>
                 This is an app that allows you to keep track of your favorite 
                 cryptocurrencies, and see the top 4 current gainers. 
                 We have visualized the last 7 days of data when the cryptocurrency is displayed on the graph.

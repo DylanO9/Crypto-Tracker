@@ -20,28 +20,26 @@ function Login() {
     };
 
     return (
-        <div className="login">
-            <form className='login-form' onSubmit={handleSubmit}>
-                <h1 className='login-title'>Log in</h1>
-
-                <label className='login-label'>Email: </label>
+        <main>
+            <form id='login' onSubmit={handleSubmit}>
+                <h1>Log in</h1>
+                <label>Email:</label>
                 <input
                     className='login-input'
                     type='email'
                     onChange={(e) => setEmail(e.target.value)}
                     value={email} />
-                <label className='login-label'>Password: </label>
+                <label>Password:</label>
                 <input
                     className='login-input'
                     type='password'
                     onChange={(e) => setPassword(e.target.value)}
                     value={password} />
-
-                <button className='login-button' disabled={isLoading}>Log in</button>
+                <button disabled={isLoading}>Log in</button>
                 {error && (<div className='error'>{error}</div>)}
+                <p> <Link to='/signup'><span>Not a member yet? Sign up</span></Link></p>
             </form>
-            <p className='signup'> <Link to='/signup'><span>Not a member yet? Sign up</span></Link></p>
-        </div>
+        </main>
     )
 }
 

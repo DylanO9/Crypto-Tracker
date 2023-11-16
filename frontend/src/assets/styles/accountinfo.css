@@ -1,78 +1,23 @@
-.account-info-section {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    width: 100%;
-}
-
-.account-info-form {
-    font-size: .75vw;
-    padding: 10px;
-    height: 100%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-}
-
-.account-info {
-    display: flex;
-    flex-direction: column;
-    height: 25%;
-}
-
-.personal-info {
-    display: flex;
-    flex-direction: column;
-    height: 25%;
-}
-
-input {
-    text-decoration: none;
-    color: white;
-    border: none;
-    background: none;
-}
-
-input::placeholder {
-    color: white;
-}
-
-.no-account {
-    color: white;
-}
-
-.settings-body {
+#account-info {
     width: 100%;
     height: 100%;
 }
 
-.personal-info-title {
-    border: 1px;
-    border-style: solid;
-    border-color: white;
-    border-radius: 30px;
-    padding: 10px;
+#account-info label {
+    display: block;
 }
 
-.account-info-title {
-    border: 1px;
-    border-style: solid;
-    border-color: white;
-    border-radius: 30px;
-    padding: 10px;
+#account-info h2 {
+    font-size: var(--font-size-3);
 }
 
-.form-button {
-    background-color: var(--secondary-color);
-    color: white;
+#account-info input {
+    display: inline;
     border: none;
-    border-radius: 30px;
-    width: 100px;
-    height: 30px;
-    margin-top: 10px;
-}
-
-.form-button:hover {
-    background-color: var(--primary-color);
     color: black;
+}
+
+#no-account {
+    width: 100%;
+    height: 100%;
 }
