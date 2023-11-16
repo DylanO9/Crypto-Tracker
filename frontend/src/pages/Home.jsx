@@ -190,7 +190,7 @@ function Home() {
                     <input type='text' placeholder='Search' id='search-bar' value={searchTerm} onChange={e =>{setSearchTerm(e.target.value)}}/>
             </form>
             {user && (
-                <div id='dashboard-user'>User: {user.email}</div>
+                <h2 id='dashboard-user'>User: {user.email}</h2>
             )}
         </header>
         <main>
